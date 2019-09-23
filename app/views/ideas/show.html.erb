@@ -1,2 +1,40 @@
-<h1>Ideas#show</h1>
-<p>Find me in app/views/ideas/show.html.erb</p>
+
+<%= link_to '<<<Back to list', ideas_path, :class => 'back-link' %>
+
+<div class = "ideas show"> 
+<h2>Show idea</h2>
+
+<table summary = "Idea detail view">
+  <tr>
+    <th>Name</th>
+    <td><%=@idea.id%> </td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <td><%=@idea.title%> </td>
+  </tr>
+  <tr>
+    <th>Content</th>
+    <td><%=@idea.body%> </td>
+  </tr>
+  <tr>
+    <th>Likes</th>
+    <td><%=@idea.user.likes.size%> </td>
+  </tr>
+  <tr>
+    <th>User</th>
+    <td><%=@idea.user.first_name%> </td>
+  </tr>
+  <tr>
+    <th>Created</th>
+    <td><%=@idea.created_at%> </td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td><%=@idea.updated_at%> </td>
+  </tr>
+
+</table>
+
+
+</div>

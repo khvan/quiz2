@@ -1,2 +1,11 @@
-<h1>Ideas#new</h1>
-<p>Find me in app/views/ideas/new.html.erb</p>
+<%= link_to "<<<Back to list", ideas_path, :class => "back-link" %>
+
+<div class = "ideas new">
+  <h2>Create Subject</h2>
+  <%= form_for(@idea) do |f| %>
+   <%= render(:partial => 'form', :locals => {:f => f})%>
+  <div class = "form-button"> 
+    <%= f.submit("Create idea")%>
+  </div>
+  <% end %>
+</div>

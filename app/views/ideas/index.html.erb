@@ -1,2 +1,33 @@
-<h1>Ideas#index</h1>
-<p>Find me in app/views/ideas/index.html.erb</p>
+
+<div class ="ideas index">
+<h2>Ideas</h2>
+
+<%= link_to 'Add New idea', new_idea_path, :class => "action new" %>
+
+  <table class="listing" summary = "idea list">
+  <tr class = "header">
+    <th># </th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Actions</th>
+    <th>User</th>
+    <th>Likes</th>
+
+  </tr>
+  <% @ideas.each do |idea| %>
+  <tr> 
+    <td>  <%= idea.id %>  </td>
+    <td>  <%= idea.title %>  </td>
+    <td class = "center">  <%= idea.body %>  </td>
+    <td class = "actions"> 
+     <%= link_to 'Show', idea_path(idea), :class => "action show" %>  
+     <%= link_to 'Edit', edit_idea_path(idea), :class => "action edit" %>  
+     <%= link_to 'Delete',delete_idea_path(idea), :class => "action delete" %>      
+    </td>
+    <td class = "center">  <%= idea.user.first_name %>  </td>
+    <td class = "center">  <%= idea.user.likes.size %>  </td>
+  </tr>
+
+<%end%>
+
+</div>
