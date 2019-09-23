@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
- root 'ideas#index'
+  root 'ideas#index'
+
+  get 'admin', :to => 'access#menu' 
+  get 'access/menu'
+  get 'access/login'
+  post 'access/attempt_login'
+
 
 #  Setting up resourceful routes for ideas
   resources :ideas do 
