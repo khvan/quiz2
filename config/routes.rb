@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   root 'ideas#index'
+  
+  # get 'reviews/index'
+  # get 'reviews/show'
+  # get 'reviews/new'
+  # get 'reviews/edit'
+  # get 'reviews/delete'
+
+ 
 
   get 'admin', :to => 'access#menu' 
   get 'access/menu'
@@ -8,11 +16,13 @@ Rails.application.routes.draw do
   post 'access/attempt_login'
 
 
+
 #  Setting up resourceful routes for ideas
   resources :ideas do 
     member do 
       get :delete
     end
+    resources :reviews, only: [:create, :destroy]
   end
 # setting resourceful routes for users
   resources :users do 

@@ -22,7 +22,7 @@
     <td class = "actions"> 
      <%= link_to 'Show', idea_path(idea), :class => "action show" %>  
      <%= link_to 'Edit', edit_idea_path(idea), :class => "action edit" %>  
-     <%= link_to 'Delete',delete_idea_path(idea), :class => "action delete" %>      
+     <%= link_to 'Delete',delete_idea_path(idea), :class => "action delete" %>          
     </td>
     <td class = "center">  <%= idea.user.first_name %>  </td>
     <td class = "center">  <%= idea.user.likes.size %>  </td>

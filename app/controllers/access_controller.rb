@@ -21,6 +21,7 @@ class AccessController < ApplicationController
   
     if authorized_user
       session[:user_id] = authorized_user.id
+      session[:user_first_name] = authorized_user.first_name
       flash[:notice] = "You are now logged in, good job"
       redirect_to(admin_path)
     else
@@ -35,6 +36,9 @@ class AccessController < ApplicationController
     redirect_to(access_login_path)
   end
 
+  def register
+    @users = User.new
+  end
 
   private
 

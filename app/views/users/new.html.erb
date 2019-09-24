@@ -1,2 +1,10 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= link_to "<<<Back to list", users_path, :class => "back-link" %>
+<div class = "users new">
+  <h2>Create Subject</h2>
+  <%= form_for(@user) do |f| %>
+   <%= render(:partial => 'form', :locals => {:f => f})%>
+  <div class = "form-button"> 
+    <%= f.submit("Create user")%>
+  </div>
+  <% end %>
+</div>

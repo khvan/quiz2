@@ -1,12 +1,19 @@
 class IdeasController < ApplicationController
+  # load_and_authorize_resource
   layout 'admin'
+  before_action :confirm_logged_in, :except => [:show, :index, :logout]
 
   def index
     @ideas = Idea.all
+    @reviews = Review.all
   end
 
   def show
+    @review = Review.new
     @idea = Idea.find(params[:id])
+    @reviews = @idea.reviews.order(created_at: :DESC)
+    # @reviews = Review.all(params[:idea_id])
+
   end
 
   def new
@@ -15,6 +22,7 @@ class IdeasController < ApplicationController
 
   def create
     @idea = Idea.new(idea_params)
+    @idea.user = current_user
     if @idea.save 
     flash[:notice] = "Created succesfully"
     redirect_to(ideas_path)
@@ -59,6 +67,11 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title, :body, :user_id)
   end
 
-
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice] = "Please log in first"
+      redirect_to(access_login_path)
+    end
+  end
 
 end

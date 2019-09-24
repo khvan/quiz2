@@ -1,0 +1,11 @@
+<%= link_to "<<<Back to list", reviews_new_path, :class => "back-link" %>
+
+<div class = "reviews new">
+  <h2>Create Subject</h2>
+  <%= form_for(@review) do |f| %>
+   <%= render(:partial => 'form', :locals => {:f => f})%>
+  <div class = "form-button"> 
+    <%= f.submit("Create review")%>
+  </div>
+  <% end %>
+</div>

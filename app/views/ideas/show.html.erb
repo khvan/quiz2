@@ -26,6 +26,10 @@
     <td><%=@idea.user.first_name%> </td>
   </tr>
   <tr>
+    <th>Reviews</th>
+    <td><%=@reviews%> </td>
+  </tr>
+  <tr>
     <th>Created</th>
     <td><%=@idea.created_at%> </td>
   </tr>
@@ -33,8 +37,29 @@
     <th>Updated</th>
     <td><%=@idea.updated_at%> </td>
   </tr>
+  <tr>
+  <th>Leave a review</th>
+  <%= form_with model: [@idea, @review], local: true do |f| %> 
+    <td> <%=  f.text_area :body %> </td>
+    <td>  <%= f.submit "submit" %> </td>
+
+  <% end %>
+  </tr>
+
+
+
+
+</div>
 
 </table>
+<div class = "review table">
+<h4>Reviews</h4>
+  <%= @reviews.each do |review| %>
+    <p><%= review.body%></p>
+    <%end%>
+</div>
+
+
 
 
 </div>
